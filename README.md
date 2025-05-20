@@ -55,5 +55,5 @@ Start the server
 Get API key from [OpenWeatherMap](https://openweathermap.org/api). Create an .env file with following variables
 
 ```bash
-  VITE_OPENWEATHER_API_KEY=
+  VITE_OPENWEATHER_API_KEY= {YOUR API KEY}
 ```
