@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+# 🌤 React Climate 🌤
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<!-- ### Demo: [**▶️ Click ▶️**](https://react-pizza-v2-by-alongo.vercel.app/) -->
 
-Currently, two official plugins are available:
+<!-- ![App Screenshot](https://react-pizza-v2-by-alongo.vercel.app/project-image.png) -->
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Technology:
 
-## Expanding the ESLint configuration
+- **React 18**  
+- **TypeScript**  
+- **Tailwind CSS** (utility-first styling)  
+- **Shadcn UI** (pre-built accessible UI components)  
+- **TanStack Query** (data fetching and caching)  
+- **Recharts** (data visualization and charts)  
+- **OpenWeather API** (weather data source)  
+- **React Hooks** (useState, useEffect, etc.)  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### More about technology
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **[TypeScript](https://www.typescriptlang.org/) –** a strongly typed superset of JavaScript. It helps catch errors at compile time, improves code readability, and serves as built-in documentation through type annotations.
+- **[Tailwind CSS](https://tailwindcss.com/) –** a utility-first CSS framework that speeds up UI development by using pre-defined classes directly in markup. It promotes consistency and rapid prototyping.
+- **[Shadcn UI](https://ui.shadcn.com/) –** a collection of accessible and customizable UI components built with Radix UI and Tailwind CSS. It helps create clean, production-ready designs quickly.
+- **[TanStack Query](https://tanstack.com/query/latest) –** a powerful data-fetching and state management library. It handles caching, background updates, and error handling efficiently without the need for global state.
+- **[Recharts](https://recharts.org/en-US/) –** a composable charting library built on React components. It allows developers to easily visualize data with bar charts, line graphs, and more.
+- **[OpenWeather API](https://openweathermap.org/api) –** provides access to current and forecasted weather data. It powers the weather functionality of the app with real-time and accurate data.
+
+
+
+## 🗄Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/vadym-kobylan/react-climate.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Go to the project directory
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+  cd react-climate
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run dev
+```
+
+Get API key from [OpenWeatherMap](https://openweathermap.org/api). Create an .env file with following variables
+
+```bash
+  VITE_OPENWEATHER_API_KEY=
 ```
