@@ -7,6 +7,7 @@ import WeatherDashboard from './pages/WeatherDashboard';
 import CityPage from './pages/CityPage';
 
 import './App.css';
+import { Toaster } from 'sonner';
 
 function App() {
   const queryClient = new QueryClient({
@@ -30,6 +31,7 @@ function App() {
               <Route path="/city/:cityName" element={<CityPage />} />
             </Routes>
           </Layout>
+          <Toaster richColors />
         </ThemeProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />

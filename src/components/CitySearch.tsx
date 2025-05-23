@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { format } from 'date-fns';
-import { Search, Loader2, Clock, XCircle } from 'lucide-react';
+import { Search, Loader2, Clock, XCircle, Star } from 'lucide-react';
 import {
   Command,
   CommandDialog,
@@ -15,6 +15,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useLocationSearch } from '@/hooks/useWeather';
 import { useSearchHistory } from '@/hooks/useSearchHistory';
+import { useFavorite } from '@/hooks/useFavorite';
 
 const CitySearch = () => {
   const [open, setOpen] = useState(false);
@@ -23,6 +24,7 @@ const CitySearch = () => {
 
   const { data: locations, isLoading } = useLocationSearch(query);
   const { history, clearHistory, addToHistory } = useSearchHistory();
+  const { favorites } = useFavorite();
 
   const handleSelect = (cityData: string) => {
     const [lat, lon, name, country] = cityData.split('|');
@@ -56,11 +58,31 @@ const CitySearch = () => {
             {query.length > 2 && !isLoading && <CommandEmpty>No cities found.</CommandEmpty>}
 
             {/* Favorites Section */}
+            {favorites.length > 0 && (
+              <>
+                <CommandSeparator />
+                <CommandGroup heading="Favorites">
+                  {favorites.map((item) => (
+                    <CommandItem
+                      key={item.id}
+                      value={`${item.lat}|${item.lon}|${item.name}|${item.country}`}
+                      onSelect={handleSelect}>
+                      <Star className="mr-2 h-4 w-4 text-yellow-500" />
+                      <span>{item.name}</span>
+                      {item.state && (
+                        <span className="text-sm text-muted-foreground">, {item.state}</span>
+                      )}
+                      <span className="text-sm text-muted-foreground">, {item.country}</span>
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+                <CommandSeparator />
+              </>
+            )}
 
             {/* Search History Section */}
             {history.length > 0 && (
               <>
-                <CommandSeparator />
                 <CommandGroup>
                   <div className="flex items-center justify-between px-2 my-2">
                     <p className="text-xs text-muted-foreground">Recent Searches</p>
@@ -86,11 +108,11 @@ const CitySearch = () => {
                     </CommandItem>
                   ))}
                 </CommandGroup>
+                <CommandSeparator />
               </>
             )}
 
             {/* Search Results */}
-            <CommandSeparator />
             {locations && locations.length > 0 && (
               <CommandGroup heading="Suggestions">
                 {isLoading && (
