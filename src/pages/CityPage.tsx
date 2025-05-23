@@ -1,5 +1,4 @@
 import CurrentWeather from '@/components/CurrentWeather';
-import FavoriteCities from '@/components/FavoriteCities';
 import HourlyTemperature from '@/components/HourlyTemperature';
 import WeatherSkeleton from '@/components/LoadingSkeleton';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
@@ -43,9 +42,6 @@ const CityPage = () => {
 
   return (
     <div className="space-y-4">
-      {/* Favorite Cities */}
-      <FavoriteCities />
-
       <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold tracking-tight">
           {params.cityName}, {weatherQuery.data.sys.country}
