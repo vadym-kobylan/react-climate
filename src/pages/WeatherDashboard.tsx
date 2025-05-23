@@ -93,13 +93,6 @@ const WeatherDashboard = () => {
       {/* Favorite Cities */}
       <FavoriteCities />
 
-      <button
-        onClick={() => {
-          throw new Error('This is your first error!');
-        }}>
-        Break the world
-      </button>
-
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
         <Button
